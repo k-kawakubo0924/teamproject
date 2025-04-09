@@ -17,7 +17,7 @@
 <div class="content-container">
 <h1>メニュー</h1>
 <ul class="menu-list">
-<li><a href="<c:url value='#'/>">学生管理</a></li>
+<li><a href="<c:url value='/StudentList.jsp'/>">学生管理</a></li>
 </ul>
 <h3>成績管理</h3>
 <ul class="menu-list">
