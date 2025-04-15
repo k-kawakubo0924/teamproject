@@ -20,5 +20,5 @@
 <ul class="menu-list">
 <li><a href="<c:url value='#'/>">新規登録</a></li>
 </ul>
-
+</div>
 <%@ include file="/footer.jsp" %>
