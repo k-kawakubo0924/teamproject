@@ -12,7 +12,7 @@
 	</ul>
 	<h3>成績管理</h3>
 	<ul class="menu-list">
-		<li><a href="<c:url value='#'/>">成績登録</a></li>
+		<li><a href="<c:url value='/window/StudentCreate.jsp'/>">成績登録</a></li>
 		<li><a href="<c:url value='#'/>">成績参照</a></li>
 	</ul>
 	<ul class="menu-list">
