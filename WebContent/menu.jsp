@@ -19,4 +19,3 @@
 	<li><a href="<c:url value='/window/SubjectList.jsp'/>">科目管理</a></li>
 	</ul>
 </div>
-
