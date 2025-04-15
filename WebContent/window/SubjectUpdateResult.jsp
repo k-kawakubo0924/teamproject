@@ -9,8 +9,8 @@
 
     <!-- 右コンテンツエリア -->
     <div class="content-container">
-    <h2>科目情報登録</h2>
-        <h3>登録が完了しました</h3>
+    <h2>科目情報変更</h2>
+        <h3>変更が完了しました</h3>
 
         <a href="index.jsp">Topページへ</a>
     </div>
