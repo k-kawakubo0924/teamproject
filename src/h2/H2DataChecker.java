@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class H2DataChecker {
     // H2データベース接続
-    private static final String JDBC_URL = "jdbc:h2:~/book";
+    private static final String JDBC_URL = "jdbc:h2:~/teamproject";
     private static final String USER = "sa";
     private static final String PASSWORD = "";
 
@@ -16,9 +16,12 @@ public class H2DataChecker {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
              Statement stmt = conn.createStatement()) {
 
-            checkTable(stmt, "product");
-            checkTable(stmt, "customer");
-            checkTable(stmt, "purchase");
+            checkTable(stmt, "class_num");
+            checkTable(stmt, "school");
+            checkTable(stmt, "student");
+	    checkTable(stmt, "subject");
+            checkTable(stmt, "teachar");
+            checkTable(stmt, "test");
 
         } catch (SQLException e) {
             e.printStackTrace();
