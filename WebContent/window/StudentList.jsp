@@ -40,7 +40,7 @@
 
         <br>
         <div>
-        	<a href="index.jsp">戻る</a>
+        	<a href="<c:url value='index.jsp'/>">戻る</a>
         	</div>
     </div>
 </div>
