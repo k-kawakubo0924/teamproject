@@ -16,17 +16,19 @@ public class TeacherDAO extends DAO{
 		PreparedStatement st;
 		st=con.prepareStatement(
 				"select * from teacher where login=? and password=?");
-		st.setLong(1, id);
+		st.setInt(1, id);
 		st.setString(2, password);
 		ResultSet rs=st.executeQuery();
 
-		while (rs.next()) {
+		if (rs.next()) {
 			teacher=new Teacher();
 			teacher.setID(rs.getInt("id"));
-			teacher.setLogin(rs.getString("login"));
+//			下の文いらないかもしれないからコメントアウトした
+//			teacher.setLogin(rs.getString("login"));
 			teacher.setPassword(rs.getString("password"));
 		}
 
+		rs.close();
 		st.close();
 		con.close();
 		return teacher;
