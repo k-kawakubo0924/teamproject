@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import been.Teacher;
+import bean.Teacher;
 
 public class TeacherDAO extends DAO{
 	public Teacher search(int id, String password)
