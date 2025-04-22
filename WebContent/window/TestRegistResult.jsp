@@ -12,7 +12,7 @@
     <h2>成績管理</h2>
         <h3>登録が完了しました。</h3>
 
-        <a href="index.jsp">Topページへ</a>
+        <a href="../index.jsp">Topページへ</a>
     </div>
 </div>
 

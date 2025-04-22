@@ -12,7 +12,7 @@
     <h2>学生情報変更</h2>
         <h3>変更が完了しました</h3>
 
-        <a href="index.jsp">Topページへ</a>
+        <a href="../index.jsp">Topページへ</a>
     </div>
 </div>
 
