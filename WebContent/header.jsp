@@ -16,7 +16,8 @@
 <!-- 上部タイトルエリア -->
 <div class="header-wrapper">
     <h1>得点管理システム</h1>
-</div>
+
 <ul class="rogout">
 <li><a href="<c:url value='#'/>">ログアウト</a></li>
 </ul>
+</div>
