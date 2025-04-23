@@ -10,17 +10,17 @@
     </div>
 
 	<!-- 右コンテンツエリア -->
-	<div class="content-container">
-    	<h1>科目情報削除</h1>
-    	<p>「」を削除してもよろしいですか？</p>
+    <div class="content-container">
+        <h1>科目情報削除</h1>
 
-    <form action="DeleteSubjectServlet" method="post">
-        <!-- 削除対象のIDなどが必要な場合は hidden に入れる -->
-        <input type="hidden" name="subjectId" value="${subject.id}" />
-        <button type="submit">削除する</button>
-    </form>
+        <p>「${subject.name}」を削除してもよろしいですか？</p>
 
-    <a href="../index.jsp">戻る</a>
+        <form action="DeleteSubjectServlet" method="post">
+            <input type="hidden" name="subjectId" value="${subject.id}" />
+            <button type="submit">削除する</button>
+        </form>
+
+        <a href="../index.jsp">戻る</a>
 		</div>
 
         </div>
