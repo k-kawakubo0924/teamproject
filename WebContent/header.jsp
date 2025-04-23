@@ -18,6 +18,6 @@
     <h1>得点管理システム</h1>
 
 <ul class="rogout">
-<li><a href="<c:url value='#'/>">ログアウト</a></li>
+<li><a href="<c:url value='window/Login.jsp'/>">ログイン</a></li>
 </ul>
 </div>
