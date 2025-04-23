@@ -15,7 +15,7 @@ public class ClassNum {
 		this.school = school;
 	}
 
-	public String getClassnum() {
+	public String getClassNum() {
 		return class_num;
 	}
 
