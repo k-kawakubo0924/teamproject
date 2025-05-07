@@ -4,7 +4,7 @@
 <body>
 <div class="login-container">
         <h2>ログイン</h2>
-        <form action="loginProcess.jsp" method="post">
+        <form action="../scoremanager/LoginExecuteAction.java" method="post">
             <div class="form-group">
                 <label for="userId">ユーザーID:</label>
                 <input type="text" id="userId" name="userId" required>
