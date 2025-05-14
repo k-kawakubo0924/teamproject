@@ -4,17 +4,13 @@
 <body>
 <div class="login-container">
         <h2>ログイン</h2>
-        <form action="../scoremanager/LoginExecuteAction.java" method="post">
-            <div class="form-group">
-                <label for="userId">ユーザーID:</label>
-                <input type="text" id="userId" name="userId" required>
-            </div>
-            <div class="form-group">
-                <label for="password">パスワード:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">ログイン</button>
-        </form>
+        <form action="/login.do" method="post">
+  			<label for="id">ID:</label>
+  			<input type="text" name="id" id="id"><br>
+  			<label for="password">Password:</label>
+  			<input type="password" name="password" id="password"><br>
+  			<input type="submit" value="ログイン">
+		</form>
     </div>
 </body>
 <%@ include file="/footer.jsp" %>
