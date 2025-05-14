@@ -43,7 +43,7 @@
         <% if (submitted && errors.isEmpty()) { %>
             <p style="color: green;">登録が完了しました。</p>
         <% } else { %>
-            <form action="registerStudent.jsp" method="post">
+            <form action="StudentCreate.jsp" method="post">
                 <label for="admission_year">入学年度</label><br>
                 <select id="admission_year" name="admission_year">
                     <option value="">---------</option>
@@ -83,7 +83,7 @@
                     <option value="103" <%= "103".equals(className) ? "selected" : "" %>>103</option>
                 </select><br><br>
 
-                <button type="submit">登録して終了</button>
+                <a href="/StudentCreateResult.jsp"><button type="submit">登録して終了</button></a>
             </form>
         <% } %>
 
