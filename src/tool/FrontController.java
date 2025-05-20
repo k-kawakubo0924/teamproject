@@ -1,39 +1,70 @@
 package tool;
 
-import javax.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.do")
+/**
+ * フロントコントローラ (Front Controller)
+ * すべてのリクエストを一元管理し、適切なアクションクラスを実行する
+ */
+@WebServlet(urlPatterns={"*.action"}) // .actionで終わるURLをこのサーブレットで処理
 public class FrontController extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
-        throws ServletException, java.io.IOException {
-        process(req, res);
-    }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse res)
-        throws ServletException, java.io.IOException {
-        process(req, res);
-    }
+    /**
+     * POSTリクエストの処理
+     * - リクエストのパスを取得し、対応するアクションクラスを動的にロード
+     * - executeメソッドを実行し、戻り値のURLへフォワード
+     */
+    public void doPost(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws ServletException, IOException {
+    	System.out.println("Frontcontroller!");
+    	// 文字エンコーディングをUTF-8に設定
+    	request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
-    private void process(HttpServletRequest req, HttpServletResponse res)
-        throws ServletException, java.io.IOException {
+        PrintWriter out = response.getWriter();
         try {
-            String path = req.getServletPath(); // 例: "/login.do"
-            String className = "scoremanager" + path.replace(".do", "Action");
+            // ① リクエストされたURLのパスを取得
+            String path = request.getServletPath().substring(1);
+            // 例: "/chapter23/Search.action" → "chapter23/Search.action"
 
-            Class<?> c = Class.forName(className);
-            Action action = (Action) c.getDeclaredConstructor().newInstance();
-            String nextPage = action.execute(req, res);
+            // ② パスをパッケージ名(action).アクションクラス名の形式に変換
+            String name = "scoremanager." + path.replace(".a", "A").replace('/', '.');
+            // 例: "chapter23/Search.action" → "chapter23.SearchAction"
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher(nextPage);
-            dispatcher.forward(req, res);
+            System.out.println("アクションクラス名 : " + name);
+            // ③ アクションクラスのインスタンスを動的に生成
+            Action action = (Action)Class.forName(name).
+                getDeclaredConstructor().newInstance();
+            // クラスを動的ロードし、コンストラクタを呼び出してインスタンスを作成
+
+            // ④ executeメソッドを実行し、フォワード先のURLを取得
+            String url = action.execute(request, response);
+            // 例: "/searchResult.jsp" など
+
+            // ⑤ 指定されたURLへフォワード
+            request.getRequestDispatcher(url).forward(request, response);
+
         } catch (Exception e) {
-            throw new ServletException(e);
+            e.printStackTrace(out); // エラー発生時はスタックトレースを出力
         }
     }
-}
 
+    /**
+     * GETリクエストの処理
+     * - doPostメソッドを呼び出して、POSTリクエストと同じ処理を実行
+     */
+    public void doGet(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws ServletException, IOException {
+        doPost(request, response); // GETリクエストもPOSTと同様に処理
+    }
+}

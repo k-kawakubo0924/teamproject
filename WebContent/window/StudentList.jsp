@@ -39,6 +39,32 @@
         </form>
 
         <br>
+
+<!-- ▼▼ 学生一覧の表示部分 ▼▼ -->
+<table border="1">
+    <tr>
+        <th>学生番号</th>
+        <th>氏名</th>
+        <th>入学年度</th>
+        <th>クラス</th>
+        <th>在学中</th>
+    </tr>
+    <c:forEach var="student" items="${studentList}">
+        <tr>
+            <td>${student.no}</td>
+            <td>${student.name}</td>
+            <td>${student.entYear}</td>
+            <td>${student.classNum}</td>
+            <td>
+                <c:choose>
+                    <c:when test="${student.attend}">○</c:when>
+                    <c:otherwise>×</c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
+<!-- ▲▲ 学生一覧ここまで ▲▲ -->
         <div>
         	<a href="<c:url value='../index.jsp'/>">戻る</a>
         	</div>
