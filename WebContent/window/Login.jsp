@@ -4,7 +4,7 @@
 <body>
 <div class="login-container">
         <h2>ログイン</h2>
-        <form action="/login.do" method="post">
+        <form action="../index.jsp" method="post">
   			<label for="id">ID:</label>
   			<input type="text" name="id" id="id"><br>
   			<label for="password">Password:</label>
