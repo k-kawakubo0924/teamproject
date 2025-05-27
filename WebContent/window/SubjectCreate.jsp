@@ -17,7 +17,7 @@
             <h2>新規科目の登録</h2>
 
             <!-- 登録フォーム -->
-            <form action="SubjectRegisterServlet" method="post">
+            <form action="SubjectCreateResult.jsp" method="post">
                 <label for="subjectCode">科目コード</label>
                 <input type="text" id="subjectCode" name="subjectCode" placeholder="例：SUB001" required>
 
