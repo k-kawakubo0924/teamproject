@@ -25,4 +25,8 @@ public class Teacher implements java.io.Serializable{
 	public void setPassword(String password) {
 		this.password=password;
 	}
+	public School getSchool() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 }

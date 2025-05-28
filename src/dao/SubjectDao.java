@@ -40,4 +40,9 @@ public class SubjectDao extends DAO {
             return false;
         }
     }
+
+	public boolean save(Subject subject) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
 }
