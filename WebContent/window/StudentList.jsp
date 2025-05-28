@@ -35,7 +35,7 @@
             </label>
 
             <button type="submit">絞込み</button>
-            <a href="StudentRegister.jsp" class="register-link">新規登録</a>
+            <a href="StudentCreate.action" class="register-link">新規登録</a>
         </form>
 
         <br>

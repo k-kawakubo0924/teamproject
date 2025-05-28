@@ -40,10 +40,34 @@
     <div class="content-container">
         <h1>学生情報登録</h1>
 
-        <% if (submitted && errors.isEmpty()) { %>
-            <p style="color: green;">登録が完了しました。</p>
-        <% } else { %>
-            <form action="StudentCreate.jsp" method="post">
+<% if (submitted && errors.isEmpty()) {
+    // ここで Student オブジェクトを作成して DAO に渡す
+    bean.Student student = new bean.Student();
+    student.setNo(studentNumber);
+    student.setName(name);
+    student.setEntYear(admissionYear);
+    student.setClassNum(className);
+    student.setAttend(true); // 全員在学中として登録（必要に応じてフォーム化も可能）
+
+    // 学校情報をセット（仮に "01" としておく）
+    bean.School school = new bean.School();
+    school.setCd("01"); // 実際に使う学校コードに変更すること（例: フォーム入力で選択させる）
+    student.setSchool(school);
+
+    dao.StudentDao dao = new dao.StudentDao();
+    int result = dao.insertStudent(student);
+
+    if (result > 0) {
+%>
+    <p style="color: green;">登録が完了しました。</p>
+<%
+    } else {
+%>
+    <p style="color: red;">登録に失敗しました。</p>
+<%
+    }
+} else {
+%>            <form action="StudentCreate.jsp" method="post">
                 <label for="admission_year">入学年度</label><br>
                 <select id="admission_year" name="admission_year">
                     <option value="">---------</option>
@@ -83,7 +107,7 @@
                     <option value="103" <%= "103".equals(className) ? "selected" : "" %>>103</option>
                 </select><br><br>
 
-                <a href="/StudentCreateResult.jsp"><button type="submit">登録して終了</button></a>
+                <button type="submit">登録して終了</button>
             </form>
         <% } %>
 

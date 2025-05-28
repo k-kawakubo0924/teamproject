@@ -18,6 +18,8 @@ public class StudentDao extends DAO{
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+
+
         try {
             // DB接続（直書き）
             conn = getConnection();
@@ -66,5 +68,41 @@ public class StudentDao extends DAO{
         }
 
         return list;
+    }
+
+    public int insertStudent(Student student) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int result = 0;
+
+        try {
+            conn = getConnection();  // Exception も発生する可能性あり
+            String sql = "INSERT INTO student (no, name, ent_year, is_attend, class_num, school_cd) VALUES (?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, student.getNo());
+            stmt.setString(2, student.getName());
+            stmt.setString(3, student.getEntYear());
+            stmt.setBoolean(4, student.isAttend());
+            stmt.setString(5, student.getClassNum());
+            stmt.setString(6, student.getSchool().getCd());
+
+            result = stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("SQL実行中にエラーが発生しました。", e);
+        } catch (Exception e) {
+            // getConnection() で例外が出た場合に対応
+            throw new RuntimeException("データベース接続に失敗しました。", e);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                // ログなどに出すのが望ましい
+            }
+        }
+
+        return result;
     }
 }
