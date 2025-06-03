@@ -37,6 +37,12 @@ public class StudentCreateExecuteAction implements Action {
             return "student/StudentCreate.jsp";
         }
 
+        StudentDao dao = new StudentDao();
+        if (dao.existsStudent(studentNumber)) {
+        	request.setAttribute("error","この学生番号は既に登録されています。");
+        	return "student/StudentCreate.jsp";
+        }
+
         Student student = new Student();
         student.setNo(studentNumber);
         student.setName(name);
@@ -48,16 +54,16 @@ public class StudentCreateExecuteAction implements Action {
         school.setCd("oom");
         student.setSchool(school);
 
-        StudentDao dao = new StudentDao();
+
         int result = dao.insertStudent(student);
 
         if (result > 0) {
             // 登録成功時、一覧表示のアクションを呼び出す
-            return "student-list.action";
+            return "window/StudentCreateResult.jsp";
         } else {
             // 登録失敗時は再入力画面へ戻す
             request.setAttribute("error", "登録に失敗しました。");
-            return "student/StudentC.jsp";
+            return "student/StudentCreate.jsp";
         }
     }
 }

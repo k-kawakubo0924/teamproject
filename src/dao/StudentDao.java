@@ -111,4 +111,34 @@ public class StudentDao extends DAO{
 
         return result;
     }
+
+    public boolean existsStudent(String studentNo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = getConnection();
+            String sql = "SELECT COUNT(*) FROM student WHERE no = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, studentNo);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("学生番号の重複チェック中にエラーが発生しました。", e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                // ログ出力など
+            }
+        }
+
+        return false;
+    }
 }

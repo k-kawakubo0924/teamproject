@@ -45,7 +45,7 @@
 <%
     // ここで Student オブジェクトを作成して DAO に渡す
 } else {
-%>            <form action="StudentCreate.action" method="post">
+%>            <form action="StudentCreateExecute.action" method="post">
                 <label for="admission_year">入学年度</label><br>
                 <select id="admission_year" name="admission_year">
                     <option value="">---------</option>
