@@ -19,5 +19,6 @@
 
 <ul class="rogout">
 <li><a href="<c:url value='window/Login.jsp'/>">ログイン</a></li>
+<li><a href="<c:url value='window/Logout.jsp'/>">ログアウト</a></li>
 </ul>
 </div>
