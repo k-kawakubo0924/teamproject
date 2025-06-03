@@ -14,8 +14,8 @@
     <h2>学生情報登録</h2>
         <h3>登録が完了しました</h3>
 
-        <a href="../index.jsp">Topページへ</a>
+        <a href="/index.jsp">Topページへ</a>
     </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>
