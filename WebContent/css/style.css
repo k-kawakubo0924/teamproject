@@ -10,12 +10,12 @@ body {
 /* 上部タイトルエリア */
 .header-wrapper {
     width:100%;
-    background-color: #ddd;
+    background-color: #87cefa;
     padding: 10px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #00bfff;
 }
 
 /* メニューとコンテンツを横並びにするコンテナ */
@@ -44,7 +44,7 @@ body {
 /* フッターエリアの中央揃え */
 .footer {
     width: 100%;
-    background-color: #ddd;
+    background-color: #e0ffff;
     padding: 10px;
     text-align: center;
     position: fixed;
