@@ -82,7 +82,13 @@ public class StudentDao extends DAO{
 
             stmt.setString(1, student.getNo());
             stmt.setString(2, student.getName());
-            stmt.setString(3, student.getEntYear());
+            String entYearStr = student.getEntYear();
+            if (entYearStr != null && !entYearStr.trim().isEmpty()) {
+                stmt.setInt(3, Integer.parseInt(entYearStr));
+            } else {
+                throw new IllegalArgumentException("入学年度が未入力です。");
+            }
+
             stmt.setBoolean(4, student.isAttend());
             stmt.setString(5, student.getClassNum());
             stmt.setString(6, student.getSchool().getCd());

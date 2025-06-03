@@ -40,6 +40,9 @@ public class FrontController extends HttpServlet {
             String name = "scoremanager.main." + path.replace(".action", "Action").replace('/', '.');
             // 例: "chapter23/Search.action" → "chapter23.SearchAction"
 
+            System.out.println("path:" + path);
+            System.out.println("name:" + name);
+
             System.out.println("アクションクラス名 : " + name);
             // ③ アクションクラスのインスタンスを動的に生成
             Action action = (Action)Class.forName(name).
