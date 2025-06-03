@@ -1,4 +1,4 @@
-package scoremanager;
+package scoremanager.main;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Student;
 import dao.StudentDao;
 import tool.Action;
+
 
 public class StudentListAction implements Action {
 

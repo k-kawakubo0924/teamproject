@@ -1,7 +1,3 @@
-<!-- 本ファイルはトップページのJSPです -->
-
-<!-- TODO: 現在は仮の実装です。必要に応じて修正または書き換えてください。 -->
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="header.jsp" %>  <%-- タイトル + CSS --%>
@@ -18,7 +14,7 @@
 <h1>メニュー</h1>
 <ul class="menu-list">
 <li><a href="<c:url value='StudentList.action'/>">学生管理</a></li>
-</ul>
+</ul>1
 <h3>成績管理</h3>
 <ul class="menu-list">
 <li><a href="<c:url value='/window/StudentCreate.jsp'/>">成績登録</a></li>

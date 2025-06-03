@@ -40,10 +40,12 @@
     <div class="content-container">
         <h1>学生情報登録</h1>
 
-        <% if (submitted && errors.isEmpty()) { %>
-            <p style="color: green;">登録が完了しました。</p>
-        <% } else { %>
-            <form action="StudentCreate.jsp" method="post">
+<% if (submitted && errors.isEmpty()) { %>
+	<p><%= "DEBUG: studentNumber=" + studentNumber %></p>
+<%
+    // ここで Student オブジェクトを作成して DAO に渡す
+} else {
+%>            <form action="StudentCreate.action" method="post">
                 <label for="admission_year">入学年度</label><br>
                 <select id="admission_year" name="admission_year">
                     <option value="">---------</option>
@@ -83,7 +85,7 @@
                     <option value="103" <%= "103".equals(className) ? "selected" : "" %>>103</option>
                 </select><br><br>
 
-                <a href="/StudentCreateResult.jsp"><button type="submit">登録して終了</button></a>
+                <button type="submit">登録して終了</button>
             </form>
         <% } %>
 
