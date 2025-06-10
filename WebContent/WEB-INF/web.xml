@@ -6,7 +6,7 @@
 
   <servlet>
     <servlet-name>FrontController</servlet-name>
-    <servlet-class>tool.FromController</servlet-class>
+    <servlet-class>tool.FrontController</servlet-class>
   </servlet>
 
   <servlet-mapping>

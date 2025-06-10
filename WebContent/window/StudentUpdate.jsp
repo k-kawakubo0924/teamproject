@@ -6,8 +6,8 @@
 
 <%
     // 入力パラメータ取得
-    String admissionYear = request.getParameter("admissionYear");
-    String studentId = request.getParameter("studentId");
+    String admissionYear = (String)request.getAttribute("admissionYear");
+    String studentId = (String)request.getAttribute("studentId");
     String name = request.getParameter("name");
     String className = request.getParameter("class");
     String isEnrolled = request.getParameter("isEnrolled");
@@ -43,26 +43,18 @@
         <% if (submitted && errors.isEmpty()) { %>
             <p style="color: green;">変更が完了しました。</p>
         <% } else { %>
-            <form action="StudentUpdate.jsp" method="post" class="student-form">
-                <label for="admissionYear">入学年度</label><br>
-                <select id="admissionYear" name="admissionYear">
-                    <option value="">選択してください</option>
-                    <option value="2023" <%= "2023".equals(admissionYear) ? "selected" : "" %>>2023</option>
-                    <option value="2024" <%= "2024".equals(admissionYear) ? "selected" : "" %>>2024</option>
-                    <option value="2025" <%= "2025".equals(admissionYear) ? "selected" : "" %>>2025</option>
-                </select><br>
+            <form action="StudentUpdateExecute.action" method="post" class="student-form">
+                <label>入学年度</label><br>
+<span><c:out value="${student.entYear}" /></span>
+<input type="hidden" name="admissionYear" value="${student.entYear}" />            <br>
                 <% if (errors.get("admissionYear") != null) { %>
                     <span style="color: red;"><%= errors.get("admissionYear") %></span><br>
                 <% } %>
                 <br>
 
-                <label for="studentId">学生番号</label><br>
-                <input type="text" id="studentId" name="studentId"
-                       value="<%= studentId != null ? studentId : "" %>"><br>
-                <% if (errors.get("studentId") != null) { %>
-                    <span style="color: red;"><%= errors.get("studentId") %></span><br>
-                <% } %>
-                <br>
+                <label>学生番号</label><br>
+<span><c:out value="${student.no}" /></span>
+<input type="hidden" name="no" value="${student.no}" />                <br>
 
                 <label for="name">氏名</label><br>
                 <input type="text" id="name" name="name"
@@ -73,7 +65,7 @@
                 <br>
 
                 <label for="class">クラス</label><br>
-                <select name="class" id="class">
+                <select name="class" id="class_num">
                     <option value="">選択してください</option>
                     <option value="101" <%= "101".equals(className) ? "selected" : "" %>>101</option>
                     <option value="102" <%= "102".equals(className) ? "selected" : "" %>>102</option>
@@ -85,11 +77,11 @@
                 <br>
 
                 <label>
-                    <input type="checkbox" name="isEnrolled" value="true"
+                    <input type="checkbox" name="is_attend" value="true"
                         <%= "true".equals(isEnrolled) ? "checked" : "" %>> 在学中
                 </label><br><br>
 
-                 <a href="/StudentUpdateResult.jsp"><button type="submit">変更</button></a>
+				<button type="submit">変更</button>
                 <a href="../index.jsp">戻る</a>
             </form>
         <% } %>

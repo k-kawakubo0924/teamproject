@@ -141,4 +141,94 @@ public class StudentDao extends DAO{
 
         return false;
     }
+    /**
+     * 【追加メソッド】学生情報を更新するメソッド
+     * @param student 更新する学生情報を持つStudentオブジェクト
+     * @return 更新件数（成功すれば1）
+     */
+    public int updateStudent(Student student) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int result = 0;
+
+        try {
+            conn = getConnection();  // DB接続
+
+            // 更新用SQL文。no（学生番号）を条件に各カラムを更新
+            String sql = "UPDATE student SET name = ?, ent_year = ?, is_attend = ?, class_num = ?, school_cd = ? WHERE no = ?";
+            stmt = conn.prepareStatement(sql);
+
+            // パラメータセット
+            stmt.setString(1, student.getName());
+
+            String entYearStr = student.getEntYear();
+            if (entYearStr != null && !entYearStr.trim().isEmpty()) {
+                stmt.setInt(2, Integer.parseInt(entYearStr));
+            } else {
+                throw new IllegalArgumentException("入学年度が未入力です。");
+            }
+
+            stmt.setBoolean(3, student.isAttend());
+            stmt.setString(4, student.getClassNum());
+            stmt.setString(5, student.getSchool().getCd());
+
+            // WHERE句の条件（更新対象の学生番号）
+            stmt.setString(6, student.getNo());
+
+            // SQL実行（更新件数を返す）
+            result = stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("学生情報の更新中にエラーが発生しました。", e);
+        } catch (Exception e) {
+            throw new RuntimeException("データベース接続に失敗しました。", e);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                // クローズ失敗時はログなどに記録推奨
+            }
+        }
+
+        return result;
+    }
+    public Student findByNo(String no) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Student student = null;
+
+        try {
+            conn = getConnection();
+            String sql = "SELECT s.no, s.name, s.ent_year, s.is_attend, s.class_num, sc.cd, sc.name AS school_name " +
+                         "FROM student s JOIN school sc ON s.school_cd = sc.cd WHERE s.no = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, no);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                student = new Student();
+                student.setNo(rs.getString("no"));
+                student.setName(rs.getString("name"));
+                student.setEntYear(rs.getString("ent_year"));
+                student.setAttend(rs.getBoolean("is_attend"));
+                student.setClassNum(rs.getString("class_num"));
+
+                School school = new School();
+                school.setCd(rs.getString("cd"));
+                school.setName(rs.getString("school_name"));
+                student.setSchool(school);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("1件取得中にエラー", e);
+        } finally {
+            try { if (rs != null) rs.close(); if (stmt != null) stmt.close(); if (conn != null) conn.close(); } catch (SQLException e) {}
+        }
+
+        return student;
+    }
+
+
+
 }

@@ -48,6 +48,7 @@
         <th>入学年度</th>
         <th>クラス</th>
         <th>在学中</th>
+        <th>変更</th>
     </tr>
     <c:forEach var="student" items="${studentList}">
         <tr>
@@ -60,6 +61,9 @@
                     <c:when test="${student.attend}">○</c:when>
                     <c:otherwise>×</c:otherwise>
                 </c:choose>
+            </td>
+            <td>
+            	<a href="StudentUpdate.action?no=${student.no }">変更</a>
             </td>
         </tr>
     </c:forEach>
