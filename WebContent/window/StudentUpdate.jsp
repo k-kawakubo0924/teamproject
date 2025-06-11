@@ -82,7 +82,7 @@
                 </label><br><br>
 
 				<button type="submit">変更</button>
-                <a href="../index.jsp">戻る</a>
+                <a href="StudentList.action">戻る</a>
             </form>
         <% } %>
     </div>

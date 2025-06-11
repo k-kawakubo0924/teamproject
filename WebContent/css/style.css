@@ -39,6 +39,7 @@ body {
     padding: 20px;
     min-height: auto;
     overflow-y: auto;
+    padding-bottom: 60px;
 }
 
 /* フッターエリアの中央揃え */
@@ -47,7 +48,7 @@ body {
     background-color: #e0ffff;
     padding: 10px;
     text-align: center;
-    position: fixed;
+    position: static;
     bottom: 0;
     left: 0;
 }

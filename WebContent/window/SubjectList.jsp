@@ -34,11 +34,10 @@
           <tbody>
             <c:forEach var="subject" items="${subjectList}">
               <tr>
-                <td>${subject.code}</td>
+                <td>${subject.cd}</td>
                 <td>${subject.name}</td>
-                <td><a href="<c:url value='/subjectEdit.jsp?code=${subject.code}'/>">変更</a></td>
-                <td><a href="<c:url value='/subjectDelete.jsp?code=${subject.code}'/>">削除</a></td>
-              </tr>
+			<td><a href="<c:url value='/window/subjectUpdate.jsp'><c:param name='cd' value='${subject.cd}'/></c:url>">変更</a></td>
+            <td><a href="<c:url value='/window/subjectDelete.jsp'><c:param name='cd' value='${subject.cd}'/></c:url>">削除</a></td>              </tr>
             </c:forEach>
           </tbody>
         </table>

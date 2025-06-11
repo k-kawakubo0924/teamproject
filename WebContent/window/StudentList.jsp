@@ -69,9 +69,6 @@
     </c:forEach>
 </table>
 <!-- ▲▲ 学生一覧ここまで ▲▲ -->
-        <div>
-        	<a href="<c:url value='../index.jsp'/>">戻る</a>
-        	</div>
     </div>
 </div>
 

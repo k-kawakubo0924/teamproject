@@ -91,7 +91,7 @@
 
         <br>
         <div>
-            <a href="../index.jsp">戻る</a>
+            <a href="StudentList.action">戻る</a>
         </div>
     </div>
 </div>
