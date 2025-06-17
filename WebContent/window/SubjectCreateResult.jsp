@@ -13,7 +13,7 @@
     <h2>科目情報登録</h2>
         <h3>登録が完了しました</h3>
 
-        <a href="SubjectCreate.JSP">戻る</a>
+        <a href="../SubjectCreate.jsp">戻る</a>
     </div>
 </div>
 
