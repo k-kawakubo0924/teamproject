@@ -16,7 +16,7 @@
 		<li><a href="<c:url value='/window/TestList.jsp'/>">成績参照</a></li>
 	</ul>
 	<ul class="menu-list">
-	<li><a href="<c:url value='/window/SubjectList.jsp'/>">科目管理</a></li>
+	<li><a href="<c:url value='SubjectList.action'/>">科目管理</a></li>
 	</ul>
 
 </div>
