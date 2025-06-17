@@ -16,7 +16,7 @@
 
     <!-- 新規登録リンク -->
     <ul class="menu-list">
-      <li><a href="<c:url value='../window/SubjectCreate.jsp'/>">新規登録</a></li>
+      <li><a href="<c:url value='SubjectCreate.action'/>">新規登録</a></li>
     </ul>
 
     <!-- 科目一覧表示テーブル -->

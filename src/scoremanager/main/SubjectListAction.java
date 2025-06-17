@@ -32,7 +32,7 @@ public class SubjectListAction implements Action {
 
             req.setAttribute("subjectList", subjectList);
 
-            return "/window/SubjectList.jsp";
+            return "window/SubjectList.jsp";
 
         } catch (Exception e) {
             e.printStackTrace();
