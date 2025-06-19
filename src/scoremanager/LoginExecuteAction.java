@@ -13,7 +13,11 @@ public class LoginExecuteAction implements Action {
         try {
             // フォームから送られたパラメータを取得
             int id = Integer.parseInt(req.getParameter("id"));
-            String password = req.getParameter("password");
+            String password = req.getParameter("password");;
+
+            System.out.println("受信したID: " + id);
+            System.out.println("受信したパスワード: " + password);
+
 
             // DAOで認証チェック
             TeacherDAO dao = new TeacherDAO();
