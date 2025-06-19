@@ -36,8 +36,8 @@
               <tr>
                 <td>${subject.cd}</td>
                 <td>${subject.name}</td>
-			<td><a href="<c:url value='/window/subjectUpdate.jsp'><c:param name='cd' value='${subject.cd}'/></c:url>">変更</a></td>
-            <td><a href="<c:url value='/window/subjectDelete.jsp'><c:param name='cd' value='${subject.cd}'/></c:url>">削除</a></td>              </tr>
+			<td><a href="<c:url value='SubjectUpdate.action'><c:param name='cd' value='${subject.cd}'/></c:url>">変更</a></td>
+            <td><a href="<c:url value='SubjectDelete.action'><c:param name='cd' value='${subject.cd}'/></c:url>">削除</a></td>              </tr>
             </c:forEach>
           </tbody>
         </table>
